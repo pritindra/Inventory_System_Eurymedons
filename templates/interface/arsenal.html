@@ -1,10 +1,398 @@
 {% extends "interface/base.html" %}
 {% block content %}
+<head>
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+</head>
+<style>
+  /**/
+  .swatches {
+    margin: 17px 0 80px
+}
+.selector-wrapper,
+#productSelect {
+    display: none
+}
+.swatch {
+    float: left;
+    margin-right: 40px
+}
+.swatch:nth-last-child(2) {
+    margin-right: 0
+}
+.swatch .header {
+    font-family: "montserratbold", sans-serif;
+    text-transform: uppercase
+}
+.swatch input {
+    display: none
+}
+.swatch .swatch-element {
+    float: left;
+    margin: 5px 8px 0 0;
+    position: relative
+}
+.swatch .color label {
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    border: 1px solid;
+    cursor: pointer;
+    display: block;
+    height: 42px;
+    padding: 7px 0 0 7px;
+    width: 42px
+}
+.swatch .color label span {
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    display: block;
+    height: 26px;
+    position: relative;
+    width: 26px
+}
+.swatch .color label span:after {
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEycHgiIGhlaWdodD0iOXB4IiB2aWV3Qm94PSIwIDAgMTIgOSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8ZyBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTIzMS4wMDAwMDAsIC0xMzAyLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMy4wMDAwMDAsIDEyNDYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTIzNS45MzgzNyw1OC40NTA1ODYxIEwxMjM0LjUyMTE2LDU5LjM5NTUzMDcgTDEyMzcuNTQ4NDgsNjMuOTM2NzE1OCBMMTI0NS45MjIyNSw1OC4zNTM5MTk4IEwxMjQ0Ljk3NzczLDU2LjkzNjcxNTggTDEyMzguMDIxMTYsNjEuNTc0NTY3MSBMMTIzNS45MzgzNyw1OC40NTA1ODYxIEwxMjM1LjkzODM3LDU4LjQ1MDU4NjEgWiIgaWQ9ImZhamZrYSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0MC4yMjE3MDYsIDYwLjQzNjcxNikgcm90YXRlKC0xMC4wMDAwMDApIHRyYW5zbGF0ZSgtMTI0MC4yMjE3MDYsIC02MC40MzY3MTYpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==') no-repeat center center;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 100%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    width: 100%
+}
+.swatch .plain label {
+    -moz-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    -webkit-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    -moz-border-radius: 50%;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    font-family: "montserratbold", sans-serif;
+    border: 1px solid #086fcf;
+    color: #086fcf;
+    cursor: pointer;
+    display: block;
+    height: 42px;
+    padding-top: 8px;
+    text-align: center;
+    width: 42px
+}
+.swatch .color input:checked+label span:after {
+    opacity: 1
+}
+.swatch input:not(:checked)+label {
+    border-color: #edeff2 !important
+}
+.swatch input:not(:checked)+label:hover {
+    border-color: #b5b6bd !important
+}
+.swatch .plain input:not(:checked)+label {
+    color: #16161a !important
+}
+.swatch .blue input:checked+label {
+    border-color: #086fcf !important
+}
+.swatch .yellow input:checked+label {
+    border-color: #f5c81f !important
+}
+.swatch .red input:checked+label {
+    border-color: #d9332e !important
+}
+.swatch .blue label span {
+    background-color: #086fcf !important
+}
+.swatch .yellow label span {
+    background-color: #f5c81f !important
+}
+.swatch .red label span {
+    background-color: #d9332e !important
+}
+.crossed-out {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0
+}
+.swatch .swatch-element .crossed-out {
+    display: none
+}
+.swatch .swatch-element.soldout .crossed-out {
+    display: block
+}
+.swatch .swatch-element.soldout label {
+    filter: alpha(opacity=60);
+    -khtml-opacity: 0.6;
+    -moz-opacity: 0.6;
+    opacity: 0.6
+}
+.swatch .tooltip {
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    text-align: center;
+    background-color: rgba(22, 22, 26, 0.93);
+    color: #fff;
+    bottom: 100%;
+    padding: 10px;
+    display: block;
+    position: absolute;
+    width: 100px;
+    left: -23px;
+    margin-bottom: 15px;
+    filter: alpha(opacity=0);
+    -khtml-opacity: 0;
+    -moz-opacity: 0;
+    opacity: 0;
+    visibility: hidden;
+    -webkit-transform: translateY(10px);
+    -moz-transform: translateY(10px);
+    -ms-transform: translateY(10px);
+    -o-transform: translateY(10px);
+    transform: translateY(10px);
+    -webkit-transition: all .25s ease-out;
+    -moz-transition: all .25s ease-out;
+    -ms-transition: all .25s ease-out;
+    -o-transition: all .25s ease-out;
+    transition: all .25s ease-out;
+    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
+    z-index: 10000;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box
+}
+.swatch .tooltip:before {
+    bottom: -20px;
+    content: " ";
+    display: block;
+    height: 20px;
+    left: 0;
+    position: absolute;
+    width: 100%
+}
+.swatch .tooltip:after {
+    border-left: solid transparent 10px;
+    border-right: solid transparent 10px;
+    border-top: solid rgba(22, 22, 26, 0.93) 10px;
+    bottom: -10px;
+    content: " ";
+    height: 0;
+    left: 50%;
+    margin-left: -13px;
+    position: absolute;
+    width: 0
+}
+.swatch .swatch-element:hover .tooltip {
+    filter: alpha(opacity=100);
+    -khtml-opacity: 1;
+    -moz-opacity: 1;
+    opacity: 1;
+    visibility: visible;
+    -webkit-transform: translateY(0px);
+    -moz-transform: translateY(0px);
+    -ms-transform: translateY(0px);
+    -o-transform: translateY(0px);
+    transform: translateY(0px)
+}
 
-<div class="col-md-8 order-md-1">
+  /**/
+   body {
+  padding: 0px 0;
+  position: relative;
+}
+
+.gallery {
+  width: 600px;
+  margin: auto;
+  border-radius: 3px;
+  overflow: hidden;
+
+}
+.img-c {
+  width: 200px;
+  height: 200px;
+  float: left;
+  position: relative;
+  overflow: hidden;
+}
+
+.img-w {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+  transition: transform ease-in-out 300ms;
+}
+
+.img-w img {
+  display: none;
+}
+
+.img-c {
+    transition: width ease 400ms, height ease 350ms, left cubic-bezier(0.4, 0, 0.2, 1) 420ms, top cubic-bezier(0.4, 0, 0.2, 1) 420ms;
+}
+
+.img-c:hover .img-w {
+  transform: scale(1.08);
+  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 450ms;
+}
+
+.img-c.active {
+  width: 100% !important;
+  height: 100% !important;
+  position: absolute;
+  z-index: 2;
+  //transform: translateX(-50%);
+}
+
+.img-c.postactive {
+  position: absolute;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.img-c.active.positioned {
+  left: 0 !important;
+  top: 0 !important;
+  transition-delay: 50ms;
+}
+</style>
+<div class="col-4">
+  
     
 </div>
 <div class="col-md-4">
-    hello
+    <section class="container">
+        <h1>Arsenal</h1>
+        <div style = "position:relative; left:800px;">
+          <h1>Quick Info</h1>
+          <div style = "position:relative; left:8px;">
+            <div class="swatches">
+              <div class="swatch clearfix" data-option-index="1">
+                <div class="header">Product Status</div>
+                <div data-value="Blue" class="swatch-element color blue available">
+                  <div class="tooltip">Got it</div>
+                  <input quickbeam="color" id="swatch-1-blue" type="radio" name="option-1" value="Blue" checked  />
+                  <label for="swatch-1-blue" style="border-color: blue;">
+                    
+                    <span style="background-color: blue;"></span>
+                  </label>
+                </div>
+                <div data-value="Red" class="swatch-element color red available">
+                  <div class="tooltip">Missing</div>
+                  <input quickbeam="color" id="swatch-1-red" type="radio" name="option-1" value="Red"  />
+                  <label for="swatch-1-red" style="border-color: red;">
+                    
+                    <span style="background-color: red;"></span>
+                  </label>
+                </div>
+                <div data-value="Yellow" class="swatch-element color yellow available">
+                  <div class="tooltip">Not Reached yet</div>
+                  <input quickbeam="color" id="swatch-1-yellow" type="radio" name="option-1" value="Yellow"  />
+                  <label for="swatch-1-yellow" style="border-color: yellow;">
+                    <span style="background-color: yellow;"></span>
+                  </label>
+                </div>
+                <h2 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+                </h2>
+                <h2>&nbsp;</h2>
+                <h6>This is something about the product</h6>&nbsp;
+                
+              </div>
+
+              </div>
+              </div>
+        </div>
+        
+        <div class="gallery">
+          <div class="img-w">
+            <img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
+
+
+
+
+
+          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
+           
+          
+          
+          
+          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
+          
+          
+          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
+          
+          
+          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
+          
+          
+          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
+          
+          
+          
+          
+          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
+        </div>
+
+        </div>	
+    </section>
+      
 </div>
+<script>
+  $(function() {
+   $(".img-w").each(function() {
+     $(this).wrap("<div class='img-c'></div>")
+     let imgSrc = $(this).find("img").attr("src");
+      $(this).css('background-image', 'url(' + imgSrc + ')');
+   })
+   $(".img-w").each(function() {
+     $(this).wrap("<div class='swatches'></div>")
+     
+   })
+              
+   
+   $(".img-c").click(function() {
+     let w = $(this).outerWidth()
+     let h = $(this).outerHeight()
+     let x = $(this).offset().left
+     let y = $(this).offset().top  
+     $(".active").not($(this)).remove()
+     let copy = $(this).clone();
+     copy.insertAfter($(this)).height(h).width(w).delay(500).addClass("active")
+     $(".active").css('top', y - 8);
+     $(".active").css('left', x - 8);
+     
+       setTimeout(function() {
+     copy.addClass("positioned")
+   }, 0)
+     
+   })  
+ })
+ $(document).on("click", ".img-c.active", function() {
+   let copy = $(this)
+   copy.removeClass("positioned active").addClass("postactive")
+   setTimeout(function() {
+     copy.remove();
+   }, 500)
+ })
+ </script>
 {% endblock %}
