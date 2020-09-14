@@ -1,398 +1,369 @@
 {% extends "interface/base.html" %}
 {% block content %}
+<!DOCTYPE html>
+<html lang="en" >
 <head>
-    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+  <meta charset="UTF-8">
+  <title>CodePen - Responsive Shopping Cart</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+<link rel="stylesheet" href="./style.css">
+
 </head>
+
+
+
 <style>
-  /**/
-  .swatches {
-    margin: 17px 0 80px
-}
-.selector-wrapper,
-#productSelect {
-    display: none
-}
-.swatch {
+  /* Global "table" column settings */
+  .product-image {
     float: left;
-    margin-right: 40px
-}
-.swatch:nth-last-child(2) {
-    margin-right: 0
-}
-.swatch .header {
-    font-family: "montserratbold", sans-serif;
-    text-transform: uppercase
-}
-.swatch input {
-    display: none
-}
-.swatch .swatch-element {
-    float: left;
-    margin: 5px 8px 0 0;
-    position: relative
-}
-.swatch .color label {
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    border: 1px solid;
-    cursor: pointer;
-    display: block;
-    height: 42px;
-    padding: 7px 0 0 7px;
-    width: 42px
-}
-.swatch .color label span {
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    display: block;
-    height: 26px;
-    position: relative;
-    width: 26px
-}
-.swatch .color label span:after {
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    background: transparent url('data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+Cjxzdmcgd2lkdGg9IjEycHgiIGhlaWdodD0iOXB4IiB2aWV3Qm94PSIwIDAgMTIgOSIgdmVyc2lvbj0iMS4xIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB4bWxuczpza2V0Y2g9Imh0dHA6Ly93d3cuYm9oZW1pYW5jb2RpbmcuY29tL3NrZXRjaC9ucyI+CiAgICA8ZyBzdHJva2U9Im5vbmUiIHN0cm9rZS13aWR0aD0iMSIgZmlsbD0ibm9uZSIgZmlsbC1ydWxlPSJldmVub2RkIj4KICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTIzMS4wMDAwMDAsIC0xMzAyLjAwMDAwMCkiIGZpbGw9IiNGRkZGRkYiPgogICAgICAgICAgICA8ZyB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMy4wMDAwMDAsIDEyNDYuMDAwMDAwKSI+CiAgICAgICAgICAgICAgICA8cGF0aCBkPSJNMTIzNS45MzgzNyw1OC40NTA1ODYxIEwxMjM0LjUyMTE2LDU5LjM5NTUzMDcgTDEyMzcuNTQ4NDgsNjMuOTM2NzE1OCBMMTI0NS45MjIyNSw1OC4zNTM5MTk4IEwxMjQ0Ljk3NzczLDU2LjkzNjcxNTggTDEyMzguMDIxMTYsNjEuNTc0NTY3MSBMMTIzNS45MzgzNyw1OC40NTA1ODYxIEwxMjM1LjkzODM3LDU4LjQ1MDU4NjEgWiIgaWQ9ImZhamZrYSIgc2tldGNoOnR5cGU9Ik1TU2hhcGVHcm91cCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMTI0MC4yMjE3MDYsIDYwLjQzNjcxNikgcm90YXRlKC0xMC4wMDAwMDApIHRyYW5zbGF0ZSgtMTI0MC4yMjE3MDYsIC02MC40MzY3MTYpIj48L3BhdGg+CiAgICAgICAgICAgIDwvZz4KICAgICAgICA8L2c+CiAgICA8L2c+Cjwvc3ZnPg==') no-repeat center center;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 100%;
-    left: 0;
-    opacity: 0;
-    position: absolute;
-    top: 0;
-    width: 100%
-}
-.swatch .plain label {
-    -moz-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    -webkit-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-    -moz-border-radius: 50%;
-    -webkit-border-radius: 50%;
-    border-radius: 50%;
-    font-family: "montserratbold", sans-serif;
-    border: 1px solid #086fcf;
-    color: #086fcf;
-    cursor: pointer;
-    display: block;
-    height: 42px;
-    padding-top: 8px;
-    text-align: center;
-    width: 42px
-}
-.swatch .color input:checked+label span:after {
-    opacity: 1
-}
-.swatch input:not(:checked)+label {
-    border-color: #edeff2 !important
-}
-.swatch input:not(:checked)+label:hover {
-    border-color: #b5b6bd !important
-}
-.swatch .plain input:not(:checked)+label {
-    color: #16161a !important
-}
-.swatch .blue input:checked+label {
-    border-color: #086fcf !important
-}
-.swatch .yellow input:checked+label {
-    border-color: #f5c81f !important
-}
-.swatch .red input:checked+label {
-    border-color: #d9332e !important
-}
-.swatch .blue label span {
-    background-color: #086fcf !important
-}
-.swatch .yellow label span {
-    background-color: #f5c81f !important
-}
-.swatch .red label span {
-    background-color: #d9332e !important
-}
-.crossed-out {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    left: 0;
-    top: 0
-}
-.swatch .swatch-element .crossed-out {
-    display: none
-}
-.swatch .swatch-element.soldout .crossed-out {
-    display: block
-}
-.swatch .swatch-element.soldout label {
-    filter: alpha(opacity=60);
-    -khtml-opacity: 0.6;
-    -moz-opacity: 0.6;
-    opacity: 0.6
-}
-.swatch .tooltip {
-    -moz-border-radius: 2px;
-    -webkit-border-radius: 2px;
-    border-radius: 2px;
-    text-align: center;
-    background-color: rgba(22, 22, 26, 0.93);
-    color: #fff;
-    bottom: 100%;
-    padding: 10px;
-    display: block;
-    position: absolute;
-    width: 100px;
-    left: -23px;
-    margin-bottom: 15px;
-    filter: alpha(opacity=0);
-    -khtml-opacity: 0;
-    -moz-opacity: 0;
-    opacity: 0;
-    visibility: hidden;
-    -webkit-transform: translateY(10px);
-    -moz-transform: translateY(10px);
-    -ms-transform: translateY(10px);
-    -o-transform: translateY(10px);
-    transform: translateY(10px);
-    -webkit-transition: all .25s ease-out;
-    -moz-transition: all .25s ease-out;
-    -ms-transition: all .25s ease-out;
-    -o-transition: all .25s ease-out;
-    transition: all .25s ease-out;
-    -webkit-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-    -moz-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-    -ms-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-    -o-box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-    box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.28);
-    z-index: 10000;
-    -moz-box-sizing: border-box;
-    -webkit-box-sizing: border-box;
-    box-sizing: border-box
-}
-.swatch .tooltip:before {
-    bottom: -20px;
-    content: " ";
-    display: block;
-    height: 20px;
-    left: 0;
-    position: absolute;
-    width: 100%
-}
-.swatch .tooltip:after {
-    border-left: solid transparent 10px;
-    border-right: solid transparent 10px;
-    border-top: solid rgba(22, 22, 26, 0.93) 10px;
-    bottom: -10px;
-    content: " ";
-    height: 0;
-    left: 50%;
-    margin-left: -13px;
-    position: absolute;
-    width: 0
-}
-.swatch .swatch-element:hover .tooltip {
-    filter: alpha(opacity=100);
-    -khtml-opacity: 1;
-    -moz-opacity: 1;
-    opacity: 1;
-    visibility: visible;
-    -webkit-transform: translateY(0px);
-    -moz-transform: translateY(0px);
-    -ms-transform: translateY(0px);
-    -o-transform: translateY(0px);
-    transform: translateY(0px)
-}
-
-  /**/
-   body {
-  padding: 0px 0;
-  position: relative;
-}
-
-.gallery {
-  width: 600px;
-  margin: auto;
-  border-radius: 3px;
-  overflow: hidden;
-
-}
-.img-c {
-  width: 200px;
-  height: 200px;
-  float: left;
-  position: relative;
-  overflow: hidden;
-}
-
-.img-w {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-size: cover;
-  background-position: center;
-  cursor: pointer;
-  transition: transform ease-in-out 300ms;
-}
-
-.img-w img {
-  display: none;
-}
-
-.img-c {
-    transition: width ease 400ms, height ease 350ms, left cubic-bezier(0.4, 0, 0.2, 1) 420ms, top cubic-bezier(0.4, 0, 0.2, 1) 420ms;
-}
-
-.img-c:hover .img-w {
-  transform: scale(1.08);
-  transition: transform cubic-bezier(0.4, 0, 0.2, 1) 450ms;
-}
-
-.img-c.active {
-  width: 100% !important;
-  height: 100% !important;
-  position: absolute;
-  z-index: 2;
-  //transform: translateX(-50%);
-}
-
-.img-c.postactive {
-  position: absolute;
-  z-index: 2;
-  pointer-events: none;
-}
-
-.img-c.active.positioned {
-  left: 0 !important;
-  top: 0 !important;
-  transition-delay: 50ms;
-}
-</style>
-<div class="col-4">
+    width: 20%;
+  }
   
+  .product-details {
+    float: left;
+    width: 37%;
+  }
+  
+  .product-price {
+    float: left;
+    width: 12%;
+  }
+  
+  .product-quantity {
+    float: left;
+    width: 10%;
+  }
+  
+  .product-removal {
+    float: left;
+    width: 9%;
+  }
+  
+  .product-line-price {
+    float: left;
+    width: 12%;
+    text-align: right;
+  }
+  
+  /* This is used as the traditional .clearfix class */
+  .group:before, .shopping-cart:before, .column-labels:before, .product:before, .totals-item:before,
+  .group:after,
+  .shopping-cart:after,
+  .column-labels:after,
+  .product:after,
+  .totals-item:after {
+    content: '';
+    display: table;
+  }
+  
+  .group:after, .shopping-cart:after, .column-labels:after, .product:after, .totals-item:after {
+    clear: both;
+  }
+  
+  .group, .shopping-cart, .column-labels, .product, .totals-item {
+    zoom: 1;
+  }
+  
+  /* Apply clearfix in a few places */
+  /* Apply dollar signs */
+  .product .product-price:before, .product .product-line-price:before, .totals-value:before {
+    content: 'Rs ';
+  }
+  
+  /* Body/Header stuff */
+  body {
+    padding: 0px 30px 30px 20px;
+    font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 100;
+  }
+  
+  h1 {
+    font-weight: 100;
+  }
+  
+  label {
+    color: #aaa;
+  }
+  
+  .shopping-cart {
+    margin-top: -45px;
+  }
+  
+  /* Column headers */
+  .column-labels label {
+    padding-bottom: 15px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #eee;
+  }
+  .column-labels .product-image, .column-labels .product-details, .column-labels .product-removal {
+    text-indent: -9999px;
+  }
+  
+  /* Product entries */
+  .product {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #eee;
+  }
+  .product .product-image {
+    text-align: center;
+  }
+  .product .product-image img {
+    width: 100px;
+  }
+  .product .product-details .product-title {
+    margin-right: 20px;
+    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+  }
+  .product .product-details .product-description {
+    margin: 5px 20px 5px 0;
+    line-height: 1.4em;
+  }
+  .product .product-quantity input {
+    width: 40px;
+  }
+  .product .remove-product {
+    border: 0;
+    padding: 4px 8px;
+    background-color: #c66;
+    color: #fff;
+    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+    font-size: 12px;
+    border-radius: 3px;
+  }
+  .product .remove-product:hover {
+    background-color: #a44;
+  }
+  .product .more-info {
+    border: 0;
+    padding: 4px 8px;
+    background-color:  rgb(48, 25, 179);
+    color: #fff;
+    font-family: "HelveticaNeue-Medium", "Helvetica Neue Medium";
+    font-size: 12px;
+    border-radius: 3px;
+  }
+  .product .more-info:hover {
+    background-color: rgb(48, 25, 179);
+  }
+  
+  
+  /* Make adjustments for tablet */
+  @media screen and (max-width: 650px) {
+    .shopping-cart {
+      margin: 0;
+      padding-top: 20px;
+      border-top: 1px solid #eee;
+    }
+  
+    .column-labels {
+      display: none;
+    }
+  
+    .product-image {
+      float: right;
+      width: auto;
+    }
+    .product-image img {
+      margin: 0 0 10px 10px;
+    }
+  
+    .product-details {
+      float: none;
+      margin-bottom: 10px;
+      width: auto;
+    }
+  
+    .product-price {
+      clear: both;
+      width: 70px;
+    }
+  
+    .product-quantity {
+      width: 100px;
+    }
+    .product-quantity input {
+      margin-left: 20px;
+    }
+  
+    .product-quantity:before {
+      content: 'x';
+    }
+  
+    .product-removal {
+      width: auto;
+    }
+  
+    .product-line-price {
+      float: right;
+      width: 70px;
+    }
+  }
+  /* Make more adjustments for phone */
+  @media screen and (max-width: 350px) {
+    .product-removal {
+      float: right;
+    }
+  
+    .product-line-price {
+      float: right;
+      clear: left;
+      width: auto;
+      margin-top: 10px;
+    }
+  
+    .product .product-line-price:before {
+      content: 'Item Total: $';
+    }
+  
+  }</style>
+<body>
+<!-- partial:index.partial.html -->
+<h1>Arsenal</h1>
+
+<div class="shopping-cart">
+
+  <div class="column-labels">
+    <label class="product-image">Image</label>
+    <label class="product-details">Product</label>
+    <label class="product-price">Price</label>
+    <label class="product-quantity">Quantity</label>
+    <label class="product-removal">Remove</label>
+    <label class="product-line-price">Total</label>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.imgur.com/pg69Ngt.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 1</div>
+      <p class="product-description">This is the description about the product</p>
+    </div>
+    <div class="product-price">12.99</div>
+    <div class="product-quantity">
+      <input type="number" value="2" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+      <button class="more-info">
+        more info
+      </button>
+
+    </div>
+    <div class="product-line-price">25.98</div>
+  </div>
+
+  <div class="product">
+    <div class="product-image">
+      <img src="https://i.imgur.com/inIKycw.jpg">
+    </div>
+    <div class="product-details">
+      <div class="product-title">Product 2</div>
+      <p class="product-description">This is the description about the product</p>
+    </div>
+    <div class="product-price">45.99</div>
+    <div class="product-quantity">
+      <input type="number" value="1" min="1">
+    </div>
+    <div class="product-removal">
+      <button class="remove-product">
+        Remove
+      </button>
+      <button class="more-info">
+        more info
+      </button>
+
+    </div>
     
+    <div class="product-line-price">45.99</div>
+  </div>
+
+  
 </div>
-<div class="col-md-4">
-    <section class="container">
-        <h1>Arsenal</h1>
-        <div style = "position:relative; left:800px;">
-          <h1>Quick Info</h1>
-          <div style = "position:relative; left:8px;">
-            <div class="swatches">
-              <div class="swatch clearfix" data-option-index="1">
-                <div class="header">Product Status</div>
-                <div data-value="Blue" class="swatch-element color blue available">
-                  <div class="tooltip">Got it</div>
-                  <input quickbeam="color" id="swatch-1-blue" type="radio" name="option-1" value="Blue" checked  />
-                  <label for="swatch-1-blue" style="border-color: blue;">
-                    
-                    <span style="background-color: blue;"></span>
-                  </label>
-                </div>
-                <div data-value="Red" class="swatch-element color red available">
-                  <div class="tooltip">Missing</div>
-                  <input quickbeam="color" id="swatch-1-red" type="radio" name="option-1" value="Red"  />
-                  <label for="swatch-1-red" style="border-color: red;">
-                    
-                    <span style="background-color: red;"></span>
-                  </label>
-                </div>
-                <div data-value="Yellow" class="swatch-element color yellow available">
-                  <div class="tooltip">Not Reached yet</div>
-                  <input quickbeam="color" id="swatch-1-yellow" type="radio" name="option-1" value="Yellow"  />
-                  <label for="swatch-1-yellow" style="border-color: yellow;">
-                    <span style="background-color: yellow;"></span>
-                  </label>
-                </div>
-                <h2 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-                </h2>
-                <h2>&nbsp;</h2>
-                <h6>This is something about the product</h6>&nbsp;
-                
-              </div>
-
-              </div>
-              </div>
-        </div>
-        
-        <div class="gallery">
-          <div class="img-w">
-            <img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+  <script>
+    /* Set rates + misc */
+var taxRate = 0.05;
+var shippingRate = 15.00; 
+var fadeTime = 300;
 
 
+/* Assign actions */
+$('.product-quantity input').change( function() {
+  updateQuantity(this);
+});
+
+$('.product-removal button').click( function() {
+  removeItem(this);
+});
 
 
+/* Recalculate cart */
+function recalculateCart()
+{
+  var subtotal = 0;
+  
+  /* Sum up row totals */
+  $('.product').each(function () {
+    subtotal += parseFloat($(this).children('.product-line-price').text());
+  });
+  
+  /* Calculate totals */
+  var tax = subtotal * taxRate;
+  var shipping = (subtotal > 0 ? shippingRate : 0);
+  var total = subtotal + tax + shipping;
+  
+  /* Update totals display */
+  $('.totals-value').fadeOut(fadeTime, function() {
+    $('#cart-subtotal').html(subtotal.toFixed(2));
+    $('#cart-tax').html(tax.toFixed(2));
+    $('#cart-shipping').html(shipping.toFixed(2));
+    $('#cart-total').html(total.toFixed(2));
+    if(total == 0){
+      $('.checkout').fadeOut(fadeTime);
+    }else{
+      $('.checkout').fadeIn(fadeTime);
+    }
+    $('.totals-value').fadeIn(fadeTime);
+  });
+}
 
-          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
-           
-          
-          
-          
-          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
-          
-          
-          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
-          
-          
-          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
-          
-          
-          <div class="img-w"><img src="https://i.imgur.com/inIKycw.jpg" alt="" /></div>
-          
-          
-          
-          
-          <div class="img-w"><img src="https://i.imgur.com/pg69Ngt.jpg" alt="" /></div>
-        </div>
 
-        </div>	
-    </section>
-      
-</div>
-<script>
-  $(function() {
-   $(".img-w").each(function() {
-     $(this).wrap("<div class='img-c'></div>")
-     let imgSrc = $(this).find("img").attr("src");
-      $(this).css('background-image', 'url(' + imgSrc + ')');
-   })
-   $(".img-w").each(function() {
-     $(this).wrap("<div class='swatches'></div>")
-     
-   })
-              
-   
-   $(".img-c").click(function() {
-     let w = $(this).outerWidth()
-     let h = $(this).outerHeight()
-     let x = $(this).offset().left
-     let y = $(this).offset().top  
-     $(".active").not($(this)).remove()
-     let copy = $(this).clone();
-     copy.insertAfter($(this)).height(h).width(w).delay(500).addClass("active")
-     $(".active").css('top', y - 8);
-     $(".active").css('left', x - 8);
-     
-       setTimeout(function() {
-     copy.addClass("positioned")
-   }, 0)
-     
-   })  
- })
- $(document).on("click", ".img-c.active", function() {
-   let copy = $(this)
-   copy.removeClass("positioned active").addClass("postactive")
-   setTimeout(function() {
-     copy.remove();
-   }, 500)
- })
- </script>
+/* Update quantity */
+function updateQuantity(quantityInput)
+{
+  /* Calculate line price */
+  var productRow = $(quantityInput).parent().parent();
+  var price = parseFloat(productRow.children('.product-price').text());
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+  
+  /* Update line price display and recalc cart totals */
+  productRow.children('.product-line-price').each(function () {
+    $(this).fadeOut(fadeTime, function() {
+      $(this).text(linePrice.toFixed(2));
+      recalculateCart();
+      $(this).fadeIn(fadeTime);
+    });
+  });  
+}
+
+
+/* Remove item from cart */
+function removeItem(removeButton)
+{
+  /* Remove row from DOM and recalc cart total */
+  var productRow = $(removeButton).parent().parent();
+  productRow.slideUp(fadeTime, function() {
+    productRow.remove();
+    recalculateCart();
+  });
+}
+  </script>
+</body>
+</html>
 {% endblock %}
