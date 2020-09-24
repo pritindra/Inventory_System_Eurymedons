@@ -1,0 +1,29 @@
+{% extends "interface/base.html" %}
+
+{% block content %}
+
+<h2>List of users</h2>
+<p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Facere cumque laboriosam architecto placeat assumenda
+    laudantium, dolore non alias, culpa in quod? Temporibus earum laborum rerum sunt similique deserunt sit tenetur?</p>
+<div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown"
+        aria-haspopup="true" aria-expanded="false">
+        Filter by designation-
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <a class="dropdown-item" href="{% url 'user-filter' %}">SP</a>
+        <a class="dropdown-item" href="#">Another action</a>
+        <a class="dropdown-item" href="#">Something else here</a>
+    </div>
+</div>
+{% for user in users %}
+<ul class="list-group list-group-horizontal">
+    <li class="list-group-item">{{ user.user }}</li>
+    <li class="list-group-item">{{ user.email }}</li>
+    <li class="list-group-item">{{ user.designation }}</li>
+    <li class="list-group-item">{{ user.phone_number }}</li>
+    <li class="list-group-item">{{ user.branch_addr }}</li>
+</ul>
+{% endfor %}
+
+{% endblock %}
