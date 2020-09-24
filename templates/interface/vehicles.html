@@ -4,7 +4,7 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>Arsenal</title>
+  <title>CodePen - Responsive Shopping Cart</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
 <link rel="stylesheet" href="./style.css">
 
@@ -219,7 +219,7 @@
   }</style>
 <body>
 <!-- partial:index.partial.html -->
-<h1>Arsenal</h1>
+<h1>Vehicles</h1>
 
 <div class="shopping-cart">
 
@@ -232,24 +232,24 @@
     <label class="product-line-price">Total</label>
   </div>
 
-  {% for arsenal in arsenals %}
+  {% for vehicle in vehicles %}
   <div class="product">
     <div class="product-image">
-      <img src="{{ arsenal.image.url }}">
+      <img src="{{ vehicle.image }}">
     </div>
     <div class="product-details">
-      <div class="product-title">{{ arsenal.arsenal_type }}</div>
-      <p class="product-description">{{ arsenal.arsenal_availability }}</p>
+      <div class="product-title">{{ vehicle.vehicle_type }}</div>
+      <p class="product-description">{{ vehicle.vehicle_availability }}</p>
     </div>
     <div class="product-price">12.99</div>
     <div class="product-quantity">
-      <input type="number" value="{{ arsenal.arsenal_number }}" min="1">
+      <input type="number" value="{{ vehicle.vehicle_number }}" min="1">
     </div>
     <div class="product-removal">
       <button class="remove-product">
         Remove
       </button>
-      <button class="more-info" onclick="window.location.href='{% url 'more-info' arsenal.id %}'">
+      <button class="more-info" onclick="window.location.href='{% url 'more-info-vehicles' vehicle.id %}'">
         more info
       </button>
 
@@ -273,7 +273,7 @@
       <button class="remove-product">
         Remove
       </button>
-      <button class="more-info" >
+      <button class="more-info">
         more info
       </button>
 

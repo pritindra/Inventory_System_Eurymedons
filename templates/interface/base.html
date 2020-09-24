@@ -31,12 +31,14 @@
       }
     </style>
     <!-- Custom styles for this template -->
+    <link rel="stylesheet" href="{% static 'css/more_info.css' %}">
     <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+    
   </head>
   <body>
     <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
   <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Inventory</a>
-  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="cover">Home</a>
+  <a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="/">Home</a>
   
   <button class="navbar-toggler position-absolute d-md-none collapsed" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -55,7 +57,7 @@
       <div class="sidebar-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" href="dashboard">
+            <a class="nav-link active" href="{% url 'dashboard' %}">
               <span data-feather="home"></span>
               Dashboard <span class="sr-only">(current)</span>
             </a>
@@ -67,33 +69,51 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="check">
+            <a class="nav-link" href="{% url 'check' %}">
               <span data-feather="shopping-cart"></span>
-              Check in/out
+              Check out
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'checkin' %}">
+              <span data-feather="shopping-cart"></span>
+              Check in
             </a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="#">
               <span data-feather="users"></span>
-              Navigation
+              Shipments
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="categories">
-              <span data-feather="bar-chart-2"></span>
+            <a class="nav-link" href="{% url 'categories' %}">
+              <span data-feather="grid"></span>
               Categories
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Moderations
+            <a class="nav-link" href="categories">
+              <span data-feather="clipboard"></span>
+              Records
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'user-list' %}">
+              <span data-feather="globe"></span>
+              user-list
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{% url 'help' %}">
+              <span data-feather="compass"></span>
+              Help
             </a>
           </li>
         </ul>
 
         <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
+          <span>Reports:</span>
           <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
             <span data-feather="plus-circle"></span>
           </a>
