@@ -17,3 +17,6 @@ def check(request):
 
 def arsenal(request):
     return render(request, "interface/arsenal.html")
+
+def chart(request):
+    return render(request,"chart.html")
