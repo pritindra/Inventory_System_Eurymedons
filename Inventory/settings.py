@@ -32,12 +32,23 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'users',
+    'interface',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'search',
+    'widget_tweaks',
+    'django_elasticsearch_dsl',
+    'crispy_forms'
 ]
+ELASTICSEARCH_DSL = {
+    'default': {
+        'hosts': 'localhost:9200'
+    },
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -123,3 +134,11 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "interface/static")
 ]
 STATIC_ROOT = os.path.join(BASE_DIR, 'assets')
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
+
+CRISPY_TEMPLATE_PACK = 'bootstap4'
+
+LOGIN_REDIRECT_URL = 'profile'
+LOGIN_URL = 'signin'
