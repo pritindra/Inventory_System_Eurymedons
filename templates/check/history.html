@@ -1,0 +1,47 @@
+{% extends "interface/base.html" %}
+
+{% block title %} History {% endblock title %}
+
+{% load widget_tweaks %}
+{% block content %}
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Username</th>
+        <th>designation</th>
+        
+        <th>email</th>
+        <th>branch address</th>
+        <th>phone_number</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for hist in history %}
+        <tr>
+          <td>{{ hist.item }}</td>
+          <td>{{ hist.user }}</td>
+          <td>{{ hist.activity }}</td>
+          <!-- <td>
+            {% for group in hist.groups.all %}
+              {{ group }}
+            {% empty %}
+              <em class="text-muted">No group</em>
+            {% endfor %}
+          </td> -->
+          <td>{{ hist.branch_addr }}</td>
+          <td>{{ hist.phone_number }}</td>
+        </tr>
+      {% empty %}
+        <tr>
+          <td colspan="5">No data</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <button class="btn btn-primary" onclick="window.location.href='{% url 'pdf-view' %}'">
+    <span class="glyphicon glyphicon-search" ></span> PDF
+  </button>
+
+
+{% endblock %}

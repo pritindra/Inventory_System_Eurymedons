@@ -1,0 +1,130 @@
+{% extends "check/base.html" %}
+{% block content %}
+
+<div class="col-md-8 order-md-1">
+    <h4 class="mb-3">Checkout</h4>
+    <form class="needs-validation" novalidate>
+    
+
+        <div class="mb-3">
+            <label for="ID">Arsenal ID</label>
+            <div class="input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text">@</span>
+                </div>
+                <input type="text" class="form-control" id="ID" placeholder="ID number" required>
+                <div class="invalid-feedback" style="width: 100%;">
+                    Your ID is required.
+                </div>
+            </div>
+        </div>
+
+
+
+    
+
+        <div class="mb-3">
+            <label for="address2">Model No. <span class="text-muted">(Optional)</span></label>
+            <input type="text" class="form-control" id="address2" placeholder="Apartment or suite">
+        </div>
+
+        <div class="row">
+            <div class="col-md-5 mb-3">
+                <label for="branch">Branch</label>
+                <select class="custom-select d-block w-100" id="branch" required>
+                    <option value="">Choose...</option>
+                    <option>Latashil</option>
+                    <option>Narengi</option>
+                    <option>GS ROad</option>
+                    <option>Panbazar</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please select a valid branch.
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <label for="designation">type</label>
+                <select class="custom-select d-block w-100" id="designation" required>
+                    <option value="">Choose...</option>
+                    <option>Gun</option>
+                    <option>bhb</option>
+                    <option>XYZ</option>
+                </select>
+                <div class="invalid-feedback">
+                    Please provide a valid designation.
+                </div>
+            </div>
+            <div class="col-md-3 mb-3">
+                <label for="arsenal_no.">arsenal_no.</label>
+                <input type="text" class="form-control" id="arsenal_no." placeholder="" required>
+                <div class="invalid-feedback">
+                    arsenal_no. code required.
+                </div>
+            </div>
+        </div>
+        <hr class="mb-4">
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="same-address">
+            <label class="custom-control-label" for="same-address">Address is same as profile address.</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="save-info">
+            <label class="custom-control-label" for="save-info">Save this information for next time</label>
+        </div>
+        <hr class="mb-4">
+
+        <!-- <h4 class="mb-3">Payment</h4>
+
+      <div class="d-block my-3">
+        <div class="custom-control custom-radio">
+          <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked required>
+          <label class="custom-control-label" for="credit">Credit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="debit">Debit card</label>
+        </div>
+        <div class="custom-control custom-radio">
+          <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+          <label class="custom-control-label" for="paypal">PayPal</label>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6 mb-3">
+          <label for="cc-name">Name on card</label>
+          <input type="text" class="form-control" id="cc-name" placeholder="" required>
+          <small class="text-muted">Full name as displayed on card</small>
+          <div class="invalid-feedback">
+            Name on card is required
+          </div>
+        </div>
+        <div class="col-md-6 mb-3">
+          <label for="cc-number">Credit card number</label>
+          <input type="text" class="form-control" id="cc-number" placeholder="" required>
+          <div class="invalid-feedback">
+            Credit card number is required
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-3 mb-3">
+          <label for="cc-expiration">Expiration</label>
+          <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+          <div class="invalid-feedback">
+            Expiration date required
+          </div>
+        </div>
+        <div class="col-md-3 mb-3">
+          <label for="cc-cvv">CVV</label>
+          <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+          <div class="invalid-feedback">
+            Security code required
+          </div>
+        </div>
+      </div> -->
+        <hr class="mb-4">
+        <button class="btn btn-primary btn-lg btn-block" type="submit">Continue to checkout</button>
+    </form>
+</div>
+
+{% endblock %}
