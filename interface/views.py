@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from interface.models import Arsenal, Vehicles
 import sys
 from django.contrib.auth.models import User
-from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView, CreateView, DeleteView,TemplateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
 # Create your views here.
@@ -12,8 +12,6 @@ def cover(request):
 def contact(request):
     return render(request, "interface/contact.html")
 
-def dashboard(request):
-    return render(request, "interface/dashboard.html")
 
 def categories(request):
     return render(request, "interface/categories.html")
@@ -44,9 +42,12 @@ class ArsenalMoreInfo(DetailView):
     model = Arsenal
     template_name = 'interface/more_info.html'
     context_object_name = 'arsenal'
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        return data
 
 class VehicleMoreInfo(DetailView):
-    model = Arsenal
+    model = Vehicles
     template_name = 'interface/more_info_vehicles.html'
     context_object_name = 'vehicle'
     
