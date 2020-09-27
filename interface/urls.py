@@ -5,7 +5,8 @@ from interface.views import (
     VehiclesView,
     ArsenalMoreInfo,
     VehicleMoreInfo,
-    
+    CriminalMoreInfo,
+    CriminalView
 )
 from encryption.views import(
     home,
@@ -23,8 +24,10 @@ urlpatterns = [
     path('check', views.check, name='check'),
     path('arsenal', ArsenalView.as_view(), name='arsenal'),
     path('vehicles', VehiclesView.as_view(), name='vehicles'),
+    path('criminal_records', CriminalView.as_view(), name='criminal'),
     path('arsenal/<int:pk>/', ArsenalMoreInfo.as_view(), name='more-info'),
     path('vehicles/<int:pk>/', VehicleMoreInfo.as_view(), name='more-info-vehicles'),
+    path('criminal/<int:pk>/', CriminalMoreInfo.as_view(), name='more-info-criminal'),
     path('help', views.help, name='help'),
     path('encryption/', home, name='encryption'),
     path('encrypt/', encrypt, name='encrypt'),

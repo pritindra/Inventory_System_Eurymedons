@@ -24,3 +24,12 @@ class Vehicles(models.Model):
     vehicle_maintenance = models.BooleanField()
     image = models.ImageField(default='default.jpg', upload_to='vehicles_pics')
 
+class Criminal(models.Model):
+    criminal_id = models.CharField(max_length=20)
+    criminal_name = models.CharField(max_length=20)
+    crime = models.CharField(max_length=30)
+    crime_desc = models.TextField(max_length=200,null=True, blank=True)
+    criminal_contact = models.TextField(max_length=200)
+    arrest_date = models.DateTimeField()
+    is_convict = models.BooleanField()
+    image = models.ImageField(default='crime.jpg', upload_to='criminal_pics')
