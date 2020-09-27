@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 
 # Create your models here.
-class ItemObject(models.MOdel):
+class ItemObject(models.Model):
     # Static Variables
     AVAILABLE = 1
     CHECKED_OUT = 2
@@ -16,12 +16,11 @@ class ItemObject(models.MOdel):
     date_added       = models.DateField(auto_now_add=True)
     last_checkin     = models.DateTimeField(editable=False, null=True)
     status = models.PositiveIntegerField(choices=STATUS_CHOICES, default=AVAILABLE)
-    who_has          = models.OneToOneField(User, blank=True, null=True)
+    who_has          = models.OneToOneField(User, blank=True, null=True, on_delete=models.CASCADE)
     times_out        = models.PositiveIntegerField(default=0, editable=False)
     notes            = models.CharField(blank=True, max_length=500)
     history = models.ManyToManyField(User, through='ItemHistory', related_name='item_history', blank=True)
-    pending_checkin  = models.BooleanField(default=False)
-    pending_transfer = models.BooleanField(default=False)
+    
 
     def _last_checkout(self):
         try:
@@ -45,9 +44,9 @@ class ItemHistory(models.Model):
         (RETURNED, 'Returned'),
     )
 
-    item = models.ForeignKey(ItemObject)
-    user = models.ForeignKey(User)
-    activity = models.PostiveIntegerField(choices=ACTIVITY_CHOICES)
+    item = models.ForeignKey(ItemObject, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    activity = models.PositiveIntegerField(choices=ACTIVITY_CHOICES)
     timestamp = models.DateTimeField(auto_now_add=True)
 
     class Meta:
