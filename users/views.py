@@ -6,7 +6,11 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .filter import UserFilter
+from django.core.files.storage import FileSystemStorage
+from django.http import HttpResponse
+from django.template.loader import render_to_string
 
+from weasyprint import HTML
 # C
 
 
@@ -29,10 +33,18 @@ from .filter import UserFilter
 #         return render(request,'users/signin.html')
 
 
-@login_required
-def profile(request):
-    return render(request, 'users/profile.html')
+# @login_required
+# def profile(request):
+#     return render(request, 'users/profile.html')
 
+class profile(DetailView,LoginRequiredMixin):
+    model = UserInfo
+    template_name = 'users/profile.html'
+    context_object_name = 'user'
+    
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data(**kwargs)
+        return data
 # class profile(DetailView,LoginRequiredMixin):
 #     model = UserInfo
 #     template_name = 'users/profile.html'
@@ -51,3 +63,20 @@ def user_list(request):
     user_list = UserInfo.objects.all()
     user_filter = UserFilter(request.GET, queryset=user_list)
     return render(request, 'users/user_filter.html', {'filter': user_filter})
+
+
+def html_to_pdf_view(request):
+    user_list = UserInfo.objects.all()
+    user_filter = UserFilter(request.GET, queryset=user_list)
+    html_string = render_to_string('users/user_filter.html', {'filter': user_filter})
+
+    html = HTML(string=html_string).write_pdf()
+    # html.write_pdf(target='home/drex/Desktop/designs/mypdf.pdf')
+
+    # fs = FileSystemStorage('/home/drex/Desktop/designs')
+    # with fs.open('mypdf.pdf') as pdf:
+    response = HttpResponse(html, content_type='application/pdf')
+    response['Content-Disposition'] = 'inline; filename="mypdf.pdf"'
+    return response
+
+    # return response
