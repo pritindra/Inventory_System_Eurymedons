@@ -1,0 +1,107 @@
+{% extends "interface/base.html" %}
+
+{% block title %} More info | {{ arsenal.arsenal_type }} {% endblock title %}
+
+{% block content %}
+
+		<div class="container">
+	        <div class="heading-section">
+	            <h2>Arsenal Details</h2>
+	        </div>
+	        <div class="row">
+	        	<div class="col-md-6">
+	        		<div class="product-image">
+						<img src="{{ arsenal.image.url }}" style="width: 500px; height: 400px">
+					</div>
+					
+	        	</div>
+	        	<div class="col-md-6">
+	        		<div class="product-dtl">
+        				<div class="product-info">
+		        			<div class="product-name">{{ arsenal.arsenal_type }}</div>
+		        		
+		        			<div class="product-price-discount"><span></span><span class="line-through"></span></div>
+		        		</div>
+	        			<p> {{ arsenal.arsenal_availability }}   , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	        			<div class="row">
+	        			
+	        				<div class="col-md-6">
+	        					<label for="color">Status</label>
+								<select id="color" name="color" class="form-control">
+									<option>Blue</option>
+									<option>Green</option>
+									<option>Red</option>
+								</select>
+	        				</div>
+	        			</div>
+	        			<div class="product-count">
+	        				<label for="size">Quantity</label>
+	        				<form action="#" class="display-flex">
+							    <div class="qtyminus">-</div>
+							    <input type="text" name="quantity" value="{{ arsenal.arsenal_number }}" class="qty">
+							    <div class="qtyplus">+</div>
+							</form>
+							<a href="#" class="round-black-btn">Generate Report</a>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+	        <div class="product-info-tabs">
+		        <ul class="nav nav-tabs" id="myTab" role="tablist">
+				  	<li class="nav-item">
+				    	<a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
+				  	</li>
+				  	<li class="nav-item">
+				    	<a class="nav-link" id="review-tab" data-toggle="tab" href="#review" role="tab" aria-controls="review" aria-selected="false">More info</a>
+				  	</li>
+				</ul>
+				<div class="tab-content" id="myTabContent">
+				  	<div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
+				  		Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam.
+				  	</div>
+				  	<div class="tab-pane fade" id="review" role="tabpanel" aria-labelledby="review-tab">
+						<table class="table table-bordered">
+							<thead>
+							  <tr>
+								<th>Username</th>
+								<th>designation</th>
+								
+								<th>email</th>
+								<th>branch address</th>
+								<th>phone_number</th>
+							  </tr>
+							</thead>
+							<tbody>
+							  {% for arsenal in filter.qs %}
+								<tr>
+								  <td>{{ user.user }}</td>
+								  <td>{{ user.designation }}</td>
+								  <td>{{ user.email }}</td>
+								  <!-- <td>
+									{% for group in user.groups.all %}
+									  {{ group }}
+									{% empty %}
+									  <em class="text-muted">No group</em>
+									{% endfor %}
+								  </td> -->
+								  <td>{{ user.branch_addr }}</td>
+								  <td>{{ user.phone_number }}</td>
+								</tr>
+							  {% empty %}
+								<tr>
+								  <td colspan="5">No data</td>
+								</tr>
+							  {% endfor %}
+							</tbody>
+						  </table>
+						  <button class="btn btn-primary" onclick="window.location.href='{% url 'pdf-view' %}'">
+							<span class="glyphicon glyphicon-search" ></span> PDF
+						  </button>
+				  	</div>
+				</div>
+			</div>
+			
+					
+	</div>
+
+{% endblock %}

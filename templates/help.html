@@ -1,0 +1,41 @@
+{% extends "interface/base.html" %}
+{% block title %} Help section {% endblock title %}
+
+{% block content %}
+<div class="jumbotron">
+    <h1 class="display-4">Help section</h1>
+    <p class="lead">This is to help the users to understand our site and how to use it efficiently.
+        </p>
+    <hr class="my-4">
+    <p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+    <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
+</div>
+
+<div class="row">
+    <div class="col-4">
+      <div class="list-group" id="list-tab" role="tablist">
+        <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home">Basic</a>
+        <a class="list-group-item list-group-item-action" id="list-profile-list" data-toggle="list" href="#list-profile" role="tab" aria-controls="profile">Profile</a>
+        <a class="list-group-item list-group-item-action" id="list-messages-list" data-toggle="list" href="#list-messages" role="tab" aria-controls="messages">Categories</a>
+        <a class="list-group-item list-group-item-action" id="list-settings-list" data-toggle="list" href="#list-settings" role="tab" aria-controls="settings">user list</a>
+        <a class="list-group-item list-group-item-action" id="list-checkout-list" data-toggle="list" href="#list-checkout" role="tab" aria-controls="checkout">checkout</a>
+        <a class="list-group-item list-group-item-action" id="list-admin-list" data-toggle="list" href="#list-admin" role="tab" aria-controls="admin">admin</a>
+      </div>
+    </div>
+    
+    <div class="col-8">
+      <div class="tab-content" id="nav-tabContent">
+        <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list">The basic interface is the screen you see after logging in. It has tabs like categories,dashboard,reports,etc. which can be utilized by clicking on them.
+          The dashboard section is where the graphs, charts and other data is visualized for better maintenance of the iventory.
+        </div>
+        <div class="tab-pane fade" id="list-profile" role="tabpanel" aria-labelledby="list-profile-list">The profile section is where you can view the complete description of the user logged in , including all the reports and information of the user.</div>
+        <div class="tab-pane fade" id="list-messages" role="tabpanel" aria-labelledby="list-messages-list">Teh categories section is the part where it contains all the information of the items kept in the inventory. It has detail view of each and every item based on their categories.</div>
+        <div class="tab-pane fade" id="list-settings" role="tabpanel" aria-labelledby="list-settings-list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam possimus distinctio officiis. Debitis, animi in? Ea voluptas, nulla molestiae molestias expedita quos rerum vero vitae est explicabo unde fuga. Dignissimos.</div>
+        <div class="tab-pane fade" id="list-checkout" role="tabpanel" aria-labelledby="list-checkout-list">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam possimus distinctio officiis. Debitis, animi in? Ea voluptas, nulla molestiae molestias expedita quos rerum vero vitae est explicabo unde fuga. Dignissimos.</div>
+        <div class="tab-pane fade" id="list-admin" role="tabpanel" aria-labelledby="list-admin-list">The admin panel is for the superuser of this site and is capable of manupulating with the entire database. The admin can add to the tables in the database, delete them and update them.
+          Also the admin is responsible to add, delete or update users and their information. Also through it the regulars users can be given permission for certain activities only.
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
