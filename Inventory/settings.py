@@ -34,6 +34,9 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'users',
     'interface',
+    'check',
+    'dashboard',
+    'encryption',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,14 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'search',
     'widget_tweaks',
-    'django_elasticsearch_dsl',
     'crispy_forms'
 ]
-ELASTICSEARCH_DSL = {
-    'default': {
-        'hosts': 'localhost:9200'
-    },
-}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
