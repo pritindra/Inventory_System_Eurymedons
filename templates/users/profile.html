@@ -20,7 +20,7 @@
         <div class="row">
 
             <div class="col-sm-10">
-                <h1>{{ user }}</h1>
+                <h1>{{ user.user }}</h1>
             </div>
             <div class="col-sm-2"><a href="/users" class="pull-right"><img title="profile image"
                         class="img-circle img-responsive" src="http://ssl.gstatic.com/accounts/ui/avatar_2x.png"></a>
@@ -122,7 +122,7 @@
                                     <h4>Mobile: </h4>
                                 </label>
                                 <label for="mobile">
-                                    <h3>{{ mobile_number }}</h3>
+                                    <h3>{{ user.mobile_number }}</h3>
                                 </label>
                             </div>
                         </div>
@@ -133,7 +133,7 @@
                                     <h4>Email: </h4>
                                 </label>
                                 <label for="email">
-                                    <h3>{{ email }}</h3>
+                                    <h3>{{ user.email }}</h3>
                                 </label>
                             </div>
                         </div>

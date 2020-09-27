@@ -1,4 +1,7 @@
 {% extends "interface/base.html" %}
+
+{% block title %} List of users {% endblock title %}
+
 {% load widget_tweaks %}
 {% block content %}
 
@@ -30,7 +33,9 @@
       <button type="submit" class="btn btn-primary">
         <span class="glyphicon glyphicon-search"></span> Search
       </button>
+      
     </div>
+    
   </form>
 
   <table class="table table-bordered">
@@ -67,6 +72,9 @@
       {% endfor %}
     </tbody>
   </table>
+  <button class="btn btn-primary" onclick="window.location.href='{% url 'pdf-view' %}'">
+    <span class="glyphicon glyphicon-search" ></span> PDF
+  </button>
 
 
 {% endblock %}
