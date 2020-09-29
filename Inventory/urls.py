@@ -9,6 +9,9 @@ urlpatterns = [
     path('check', views.check, name='check'),
     path('arsenal', views.arsenal, name='arsenal'),
    # path('', ItemChartView.as_view(), name='home'),
-    path('chart', ItemChartView.as_view(), name = 'chart')
+    path('chart', ItemChartView.as_view(), name = 'chart'),
+    path('thechatbot',include('questionaire.urls')),
+    path('chat/',include('chat.urls')),
+    path('admin/', admin.site.urls),
 
 ]
