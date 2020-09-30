@@ -4,6 +4,10 @@
 A well designed management system(browser based web application) for eliminating time consuming physical management systems/methods, error-prone manual record keeping and physical reporting methods.
 
 This project is based on python with  various user-friendly features which are completely customizable and editable in the long run.
+
+A preview is shown below
+
+![Image Preiew](https://github.com/codesbyN/Inventory-image-Eurymedon/blob/master/SScollage.png "Image Preview")
 ### Features -
   * Frameworks -
   
