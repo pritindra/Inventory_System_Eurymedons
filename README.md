@@ -45,4 +45,12 @@ Extra apps needed are -
 
  Use `pip install libname` to install the apps.
  
- Replace `libname` with appname.
+ Steps after extracting the zip file - 
+  * Go to the project folder and start the environment with conda or venv.
+  * Run `python manage.py collecstatic`
+  * Run `python manage.py makemigrations` -> `python manage.py sqlmigrate appname migration_number` -> `python manage.py migrate`
+  * Finally run `python manage.py runserver` to run the site on your localhost on port 8000.
+  * use `python manage.py createsuperuser` to create a super user and then login to the admin panel and enjoy the databases.
+  
+  ### Site is hosted on eurymedon-inventory.herokuapp.com
+  
