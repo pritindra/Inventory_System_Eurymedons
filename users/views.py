@@ -37,7 +37,7 @@ from weasyprint import HTML
 # def profile(request):
 #     return render(request, 'users/profile.html')
 
-class profile(DetailView,LoginRequiredMixin):
+class profile(ListView,LoginRequiredMixin):
     model = UserInfo
     template_name = 'users/profile.html'
     context_object_name = 'user'
@@ -45,10 +45,6 @@ class profile(DetailView,LoginRequiredMixin):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         return data
-# class profile(DetailView,LoginRequiredMixin):
-#     model = UserInfo
-#     template_name = 'users/profile.html'
-#     context_object_name = 'user'
 
 def signout(request):
     auth.logout(request)
