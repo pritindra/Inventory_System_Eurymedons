@@ -19,7 +19,7 @@ A preview is shown below
 ### Functional features -
   * Dashboard/Charts for visualization of the data 
   * Admin panel customizable and different access level
-  * Encryption feature in lieu of barcode system for better and safe transfer of data in the check in/out system. Also it can be used with various other features, hence improving its flexibility
+  * Encryption feature in lieu of barcode system for better and safe transfer of data in the check in/out system. Also it can be used with various other features, hence improving its flexibility. Also it reduces the disadvantages in case of security of barcode systems.
   * Specific ID system for employees and different items, equipped with the encryption feature
   * Categories for different types of items stored. Each item has its own profile and can be viewed for more details. More categories can be added as per requirements if needed
   * Record/History feature for different kinds of items 
