@@ -42,6 +42,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'questionaire',
+    'chat.apps.ChatConfig',
+    'rest_framework',
     'search',
     'widget_tweaks',
     'crispy_forms'
