@@ -30,6 +30,7 @@ django-celery==3.2.2
 django-cors-headers==3.5.0
 django-countries==5.5
 django-crispy-forms==1.7.2
+django-heroku
 django-environ==0.4.5
 django-filter==1.0.4
 django-model-utils==3.2.0
@@ -51,6 +52,7 @@ itypes==1.2.0
 Jinja2==2.11.2
 jsmin==2.2.2
 kombu==4.1.0
+gunicorn
 lazy-object-proxy==1.4.1
 MarkupSafe==1.1.1
 mccabe==0.6.1

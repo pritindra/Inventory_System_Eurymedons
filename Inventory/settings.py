@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questionaire',
     'chat.apps.ChatConfig',
+
     'rest_framework',
     'search',
     'widget_tweaks',
@@ -143,6 +144,5 @@ CRISPY_TEMPLATE_PACK = 'bootstap4'
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'signin'
-
 # Activate Django-Heroku.
 django_heroku.settings(locals())
