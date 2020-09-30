@@ -52,5 +52,8 @@ Extra apps needed are -
   * Finally run `python manage.py runserver` to run the site on your localhost on port 8000.
   * use `python manage.py createsuperuser` to create a super user and then login to the admin panel and enjoy the databases.
   
+  ### Issues to be solved -
+  The chatbot is still an incomplete feature. Also as this is a prototype it has few errors to be solved but it perfectly shows the features and the main aim of of the project we built.
+  
   ### Site is hosted on eurymedon-inventory.herokuapp.com
   
