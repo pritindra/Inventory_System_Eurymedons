@@ -1,16 +1,8 @@
 {% extends "interface/base.html" %}
-{% block content %}
-<!DOCTYPE html>
-<html lang="en" >
-<head>
-  <meta charset="UTF-8">
-  <title>Arsenal</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
-<link rel="stylesheet" href="./style.css">
 
-</head>
+{% block title %}Arsenal{% endblock title%}
 
-
+{% block style %}
 
 <style>
   /* Global "table" column settings */
@@ -67,7 +59,7 @@
   /* Apply clearfix in a few places */
   /* Apply dollar signs */
   .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-    content: 'Rs ';
+    content: ' ';
   }
   
   /* Body/Header stuff */
@@ -217,7 +209,12 @@
     }
   
   }</style>
-<body>
+
+{% endblock style %}
+
+{% block content %}
+
+
 <!-- partial:index.partial.html -->
 <h1>Arsenal</h1>
 
@@ -226,7 +223,7 @@
   <div class="column-labels">
     <label class="product-image">Image</label>
     <label class="product-details">Product</label>
-    <label class="product-price">Price</label>
+    <label class="product-price">Type</label>
     <label class="product-quantity">Quantity</label>
     <label class="product-removal">Remove</label>
     <label class="product-line-price">Total</label>
@@ -241,14 +238,12 @@
       <div class="product-title">{{ arsenal.arsenal_type }}</div>
       <p class="product-description">{{ arsenal.arsenal_availability }}</p>
     </div>
-    <div class="product-price">12.99</div>
+    <div class="product-price">{{ arsenal.arsenal_name }}</div>
     <div class="product-quantity">
-      <input type="number" value="{{ arsenal.arsenal_number }}" min="1">
+      <p>{{ arsenal.arsenal_number }}</p>
     </div>
     <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
+      
       <button class="more-info" onclick="window.location.href='{% url 'more-info' arsenal.id %}'">
         more info
       </button>
@@ -257,114 +252,10 @@
     <div class="product-line-price">25.98</div>
   </div>
   {% endfor %}
-  <div class="product">
-    <div class="product-image">
-      <img src="https://i.imgur.com/inIKycw.jpg">
-    </div>
-    <div class="product-details">
-      <div class="product-title">Product 2</div>
-      <p class="product-description">This is the description about the product</p>
-    </div>
-    <div class="product-price">45.99</div>
-    <div class="product-quantity">
-      <input type="number" value="1" min="1">
-    </div>
-    <div class="product-removal">
-      <button class="remove-product">
-        Remove
-      </button>
-      <button class="more-info" >
-        more info
-      </button>
-
-    </div>
-    
-    <div class="product-line-price">45.99</div>
-  </div>
+  
 
   
 </div>
 <!-- partial -->
-  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
-  <script>
-    /* Set rates + misc */
-var taxRate = 0.05;
-var shippingRate = 15.00; 
-var fadeTime = 300;
-
-
-/* Assign actions */
-$('.product-quantity input').change( function() {
-  updateQuantity(this);
-});
-
-$('.product-removal button').click( function() {
-  removeItem(this);
-});
-
-
-/* Recalculate cart */
-function recalculateCart()
-{
-  var subtotal = 0;
   
-  /* Sum up row totals */
-  $('.product').each(function () {
-    subtotal += parseFloat($(this).children('.product-line-price').text());
-  });
-  
-  /* Calculate totals */
-  var tax = subtotal * taxRate;
-  var shipping = (subtotal > 0 ? shippingRate : 0);
-  var total = subtotal + tax + shipping;
-  
-  /* Update totals display */
-  $('.totals-value').fadeOut(fadeTime, function() {
-    $('#cart-subtotal').html(subtotal.toFixed(2));
-    $('#cart-tax').html(tax.toFixed(2));
-    $('#cart-shipping').html(shipping.toFixed(2));
-    $('#cart-total').html(total.toFixed(2));
-    if(total == 0){
-      $('.checkout').fadeOut(fadeTime);
-    }else{
-      $('.checkout').fadeIn(fadeTime);
-    }
-    $('.totals-value').fadeIn(fadeTime);
-  });
-}
-
-
-/* Update quantity */
-function updateQuantity(quantityInput)
-{
-  /* Calculate line price */
-  var productRow = $(quantityInput).parent().parent();
-  var price = parseFloat(productRow.children('.product-price').text());
-  var quantity = $(quantityInput).val();
-  var linePrice = price * quantity;
-  
-  /* Update line price display and recalc cart totals */
-  productRow.children('.product-line-price').each(function () {
-    $(this).fadeOut(fadeTime, function() {
-      $(this).text(linePrice.toFixed(2));
-      recalculateCart();
-      $(this).fadeIn(fadeTime);
-    });
-  });  
-}
-
-
-/* Remove item from cart */
-function removeItem(removeButton)
-{
-  /* Remove row from DOM and recalc cart total */
-  var productRow = $(removeButton).parent().parent();
-  productRow.slideUp(fadeTime, function() {
-    productRow.remove();
-    recalculateCart();
-  });
-}
-  </script>
-</body>
-</html>
 {% endblock %}

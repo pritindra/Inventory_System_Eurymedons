@@ -1,7 +1,6 @@
 {% extends "interface/base.html" %}
 
-
-{% block title %}Vehicles{% endblock title%}
+{% block title %}Criminal Records{% endblock title%}
 
 {% block style %}
 
@@ -60,7 +59,7 @@
   /* Apply clearfix in a few places */
   /* Apply dollar signs */
   .product .product-price:before, .product .product-line-price:before, .totals-value:before {
-    content: '';
+    content: ' ';
   }
   
   /* Body/Header stuff */
@@ -212,10 +211,12 @@
   }</style>
 
 {% endblock style %}
+
 {% block content %}
 
+
 <!-- partial:index.partial.html -->
-<h1>Vehicles</h1>
+<h1>Criminal Records</h1>
 
 <div class="shopping-cart">
 
@@ -228,35 +229,33 @@
     <label class="product-line-price">Total</label>
   </div>
 
-  {% for vehicle in vehicles %}
+  {% for criminal in criminals %}
   <div class="product">
     <div class="product-image">
-      <img src="{{ vehicle.image }}">
+      <img src="{{ criminal.image.url }}">
     </div>
     <div class="product-details">
-      <div class="product-title">{{ vehicle.vehicle_type }}</div>
-      <p class="product-description">{{ vehicle.vehicle_availability }}</p>
+      <div class="product-title">{{ criminal.criminal_name }}</div>
+      <p class="product-description">{{ criminal.crime }}</p>
     </div>
-    <div class="product-price">{{ vehicle.vehicle_name }}</div>
+    <div class="product-price">{{ criminal.criminal_id }}</div>
     <div class="product-quantity">
-      <p>{{ vehicle.vehicle_number }}</p>
+      <p>{{ criminal.criminal_number }}</p>
     </div>
     <div class="product-removal">
       
-      <button class="more-info" onclick="window.location.href='{% url 'more-info-vehicles' vehicle.id %}'">
+      <button class="more-info" onclick="window.location.href='{% url 'more-info-criminal' criminal.id %}'">
         more info
       </button>
 
     </div>
-    <div class="product-line-price">25.98</div>
+    <div class="product-line-price">{{ criminal.arrest_date }}</div>
   </div>
   {% endfor %}
-  
-    
   
 
   
 </div>
 <!-- partial -->
-
+  
 {% endblock %}

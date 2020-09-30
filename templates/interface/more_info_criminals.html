@@ -1,19 +1,19 @@
 {% extends "interface/base.html" %}
 
-{% block title %} More info | {{ vehicle.vehicle_type }} {% endblock title %}
+{% block title %} More info | {{ criminal.criminal_name }} {% endblock title %}
 
 
 {% block content %}
 
 		<div class="container">
 	        <div class="heading-section">
-	            <h2>vehicle Details</h2>
+	            <h2>Criminal Details</h2>
 	        </div>
 	        <div class="row">
 	        	<div class="col-md-6">
 	        		<div class="col-md-6">
 						<div class="product-image">
-							<img src="{{ vehicle.image.url }}" style="width: 200px; height: 400px">
+							<img src="{{ criminal.image.url }}" style="width: 500px; height: 400px">
 						</div>
 						
 					</div>
@@ -21,11 +21,11 @@
 	        	<div class="col-md-6">
 	        		<div class="product-dtl">
         				<div class="product-info">
-		        			<div class="product-name">{{ vehicle.vehicle_type }}</div>
+		        			<div class="product-name">{{ criminal.criminal_id }}</div>
 		        		
 		        			<div class="product-price-discount"><span></span><span class="line-through"></span></div>
 		        		</div>
-	        			<p> {{ vehicle.vehicle_availability }}   , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+	        			<p> {{ criminal.crime_desc }}   , sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
 	        			<div class="row">
 	        			
 	        				<div class="col-md-6">
@@ -38,12 +38,7 @@
 	        				</div>
 	        			</div>
 	        			<div class="product-count">
-	        				<label for="size">Quantity</label>
-	        				<form action="#" class="display-flex">
-							    <div class="qtyminus">-</div>
-							    <input type="text" name="quantity" value="1" class="qty">
-							    <div class="qtyplus">+</div>
-							</form>
+	        				<p>{{ criminal.crime }}</p>
 							<a href="#" class="round-black-btn">Generate Report</a>
 	        			</div>
 	        		</div>
