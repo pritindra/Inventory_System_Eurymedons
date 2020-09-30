@@ -48,7 +48,7 @@ class profile(ListView,LoginRequiredMixin):
 
 def signout(request):
     auth.logout(request)
-    return redirect('')
+    return redirect('/')
 
 # class UserList(ListView):
 #     model = UserInfo
