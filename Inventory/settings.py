@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'questionaire',
     'chat.apps.ChatConfig',
+
     'rest_framework',
     'search',
     'widget_tweaks',
