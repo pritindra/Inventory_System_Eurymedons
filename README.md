@@ -6,8 +6,7 @@ A well designed management system(browser based web application) for eliminating
 This project is based on python with  various user-friendly features which are completely customizable and editable in the long run.
 
 A preview is shown below
-
-![Image Preiew](https://github.com/codesbyN/Inventory-image-Eurymedon/blob/master/SScollage.png "Image Preview")
+![Image Preview](https://github.com/codesbyN/Inventory-image-Eurymedon/blob/master/SS1.png "Image Preview")
 ### Features -
   * Frameworks -
   
