@@ -3,6 +3,14 @@
     <img src="https://i.ibb.co/j3Hsqrp/logo.png" align="right" height="200"/>
 </a>
 
+
+
+
+
+
+
+
+
 # Inventory Management System by Eurymedons
 
 
@@ -13,7 +21,7 @@ This project is based on python with  various user-friendly features which are c
 
 A preview is shown below
 ![Image Preview](https://github.com/codesbyN/Inventory-image-Eurymedon/blob/master/SS1.png "Image Preview")
-### Features -
+### Features - :eyes: 
   * Frameworks -
   
        Django framework, Dango Rest, Bootstrap
@@ -22,7 +30,7 @@ A preview is shown below
   * Admin panel created with Django
   * Customizable user login system with  editable user profiles
   * Contact page for easier help and feedbacks 
-## Functional features -
+## Functional features - :handshake:
   * Dashboard/Charts for visualization of the data 
   * Admin panel customizable and different access level
   * Encryption feature in lieu of barcode system for better and safe transfer of data in the check in/out system. Also it can be used with various other features, hence improving its flexibility. Also it reduces the disadvantages in case of security of barcode systems.
@@ -35,7 +43,7 @@ A preview is shown below
   * Only selected admins or superusers are permitted for full acccess of the inventory. Only superusers/selected admins can give users specific permissions and other customzatios from the admin panel.
   * A user friendly chatbot for easy maintanence and help of the system
   
-  # What makes our Inventory better than everyone else?
+  # What makes our Inventory better than everyone else? :clap:
  
  The problem with the traditional inventory system was that they were not secured and easily maintainable. In a world of Technologies, there is need of an online system of inventory management. But still most inventory system is made using the outdated php language or languages such as React which is known for it's unstable modules sometimes.
   After going through a number of articles we found out that Django will be the best language for an inventory system. The Django language is open source and maintain by a large communities and with every update it becomes more and more better. It is very much secure than the other languages and even a normal user can be quickly learn to handle the models of the websites and customize it accordingly.
@@ -71,7 +79,7 @@ Extra apps needed are -
   * Finally run `python manage.py runserver` to run the site on your localhost on port 8000.
   * use `python manage.py createsuperuser` to create a super user and then login to the admin panel and enjoy the databases.
   
-  ## Issues to be solved -
+  ## Issues to be solved - :hourglass:
  * The chatbot is still an incomplete feature. Also as this is a prototype it has few errors to be solved but it perfectly shows the features and the main aim of of the project we built.
  * Since we had only one month and we have only made a prototype with a basic template, everything in the website can be improved with given time and made better.
 
