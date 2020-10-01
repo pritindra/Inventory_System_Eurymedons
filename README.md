@@ -96,6 +96,7 @@ Extra apps needed are -
   
   # A quick Navigation and feature info
   [Charts](http://eurymedon-inventory.herokuapp.com/dashboard/) - This is where you can dyanamically view charts in different ways, these are easily customizable according to the user needs.
+  
   [Encryption](http://eurymedon-inventory.herokuapp.com/encryption/encryption/) - This is the menu for the encryption system.
   
   [Categories](http://eurymedon-inventory.herokuapp.com/categories) -  This is menu for categories and product information page.
