@@ -25,7 +25,7 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('check/', include('check.urls')),
     path('encryption/', include('encryption.urls')),
-    path('questions/',include('questionaire.urls')),
+    path('thechatbot/',include('questionaire.urls')),
     path('chat/',include('chat.urls')),
     path('dashboard/', ItemChartView.as_view(), name = 'dashboard')
 
