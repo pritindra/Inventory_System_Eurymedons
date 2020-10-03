@@ -94,7 +94,7 @@ Extra apps needed are -
 ![django](https://img.shields.io/badge/-django-450098?style=round&logo=django)  
   
 
-  ### Site is hosted on [Eurymedon Inventory](https://eurymedon-inventory.herokuapp.com)
+  ### Site is hosted on [Eurymedon Inventory](http://eurymedon-inventory.herokuapp.com)
   **To login to the admin and view the models go to**
   [admin login](eurymedon-inventory.herokuapp.com/admin) 
   ### login : demo
