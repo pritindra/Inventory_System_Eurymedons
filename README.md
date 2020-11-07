@@ -42,17 +42,6 @@ A preview is shown below
   * Only selected admins or superusers are permitted for full acccess of the inventory. Only superusers/selected admins can give users specific permissions and other customzatios from the admin panel.
   * A user friendly chatbot for easy maintanence and help of the system
   
-  # What makes our Inventory better than everyone else? :clap:
- 
- The problem with the traditional inventory system was that they were not secured and easily maintainable. In a world of Technologies, there is need of an online system of inventory management. But still most inventory system is made using the outdated php language or languages such as React which is known for it's unstable modules sometimes.
-  After going through a number of articles we found out that Django will be the best language for an inventory system. The Django language is open source and maintain by a large communities and with every update it becomes more and more better. It is very much secure than the other languages and even a normal user can be quickly learn to handle the models of the websites and customize it accordingly.
-  
-  And the very next thing that makes us better than any other inventory systems is that instead of the traditional barcode system, we are now using a new cryptography based encryption system. We found out that using barcodes have now become outdated and it is very vulnerable. Any person can retrieve the information stored in a barcode and it is big concern. Even though we are just sending equiments from one place to another, we have to make everything in a secure way. 
-  
-  Now an user can use our encryption system, input the data such as the quantity of items and their types, encrypt it with a key and print out the encrypted text(instead of the barcode) and send it out with the items. The user who will recieve it will now use the key given to him and decrypt the text(instead of the usual scanning of the barcode).
-  This way is more secure as only the person who has the key can access the information.
-  
-  The Encryption system can also be used to exchange information between different person and can be put into many different uses as required by the user.
   
 # Installation - 
 The `requirements.txt` file contains all the required libraries to be installed.
